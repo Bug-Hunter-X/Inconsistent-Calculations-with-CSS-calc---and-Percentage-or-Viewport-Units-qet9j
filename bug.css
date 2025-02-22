@@ -1,0 +1,13 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there might be an unexpected behavior when combining `calc()` with other CSS properties, especially those involving percentages or units such as `em` or `rem`. For example, if you attempt to calculate the width of an element based on its parent's width using percentages and `calc()`, inconsistencies might occur due to the order of calculation and how the browser interprets units. 
+
+```css
+.container {
+  width: 50%;
+}
+
+.element {
+  width: calc(50% + 10px);
+}
+```
+
+In this example, the `width` of `.element` might not be exactly 50% of the container's width plus 10px, but rather a slightly different value due to rounding errors or how the browser handles percentage calculation within `calc()`. Another subtle error can appear when using `calc()` with `vh` or `vw` units in viewport-relative contexts. The viewport dimensions are calculated after the page has been rendered, and this can make calculations done in CSS with `calc()` less predictable and could lead to unexpected errors.
