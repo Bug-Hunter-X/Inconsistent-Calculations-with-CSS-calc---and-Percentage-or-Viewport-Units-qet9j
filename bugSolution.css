@@ -1,0 +1,18 @@
+One approach to handle potential inconsistencies with `calc()` is to avoid mixing units excessively, particularly when working with percentages and viewport-relative units (`vh`, `vw`).  Instead, consider using a more straightforward calculation method that relies less on unit conversions within `calc()`. If highly precise calculations are needed, you might need to perform calculations on the client-side using JavaScript to accurately determine the desired element dimensions based on the viewport or parent element sizes.
+
+Another possible solution is to use CSS variables (`--custom-width`, for example) to store intermediate calculation results, making the code easier to read and maintain. This can also simplify debugging.
+
+```css
+:root {
+  --container-width: 50%;
+}
+
+.container {
+  width: var(--container-width);
+}
+
+.element {
+  width: calc(var(--container-width) + 10px);
+}
+```
+This avoids potential calculation errors resulting from complex expressions within `calc()`.
